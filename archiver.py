@@ -85,7 +85,7 @@ def getRevisions(date, repo):
 
 def getPatch(rev, p, repo):
     """ Creates a revision patch. """
-    subprocess.call(["git", "-C", repo,  "diff", "{rev}^".format(rev = rev), rev], stdout = open(os.path.join(p, "{rev}.diff".format(rev = rev)), "w"))
+    subprocess.call(["git", "-C", repo, "format-patch", "-1", rev, "-o", p]) 
     
 def compressDir(folder, name, outdir):
     f = "{0}.tar.gz".format(name)
